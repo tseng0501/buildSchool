@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字定位在圖片上</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .content {
+            position: relative;
+            width: 700px;
+            margin: auto;
+            background-color: rgb(104, 104, 156);
+        }
+
+        .text {
+            position: absolute;
+            width: 250px;
+            height: 90px;
+            background-color: rgb(212, 126, 152);
+            z-index: 1;
+            padding: 10px;
+            box-sizing: border-box;
+
+        }
+
+        .content .text-top {
+            width: 250px;
+            position: absolute;
+            color: white;
+            background-color: rgb(83, 79, 79);
+            z-index: 1;
+            top: 50px;
+            padding: 10px;
+            box-sizing: border-box;
+
+        }
+
+        .content .pic{
+            position: relative;
+            text-align: right;  
+        }
+
+        .content .pic img {
+            margin-top: 50px;
+        }
+
+        .text-bottom {
+            position: relative;
+            width: 400px;
+            margin-top: -40px;
+            color: white;
+            padding: 10px;
+            background-color: gray;
+            z-index: 2;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="text">
+            <p>你好</p>
+        </div>
+        <div class="text-top">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus a minus ipsam inventore quam. Adipisci
+                atque minima praesentium impedit laboriosam qui, necessitatibus deleniti cupiditate itaque ratione?
+                Quaerat odit laborum fugiat?
+                Illum modi animi provident iusto saepe est minus
+            </p>
+        </div>
+
+
+        <div class="pic">
+            <img src="https://picsum.photos/500/350?random=20" alt="">
+        </div>
+
+        <div class="text-bottom">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem exercitationem obcaecati soluta modi.
+            Quisquam pariatur impedit beatae, perspiciatis sit odit magnam, officia eum eligendi molestias, vitae
+            reprehenderit enim ex dicta?
+            Itaque similique libero, velit enim accusantium asperiores est saepe beatae obcaecati, cumque voluptatem
+            natus cum totam labore impedit soluta iure. Fugiat, ratione assumenda nobis facilis vel placeat iusto est
+            deleniti?
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

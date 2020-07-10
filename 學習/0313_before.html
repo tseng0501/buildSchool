@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            /* height: 40px; */
+            font-size: 20px;
+            position: relative;
+            padding: 20px 40px;
+            width: 600px;
+        }
+        
+        .text{
+                background-color: brown;
+                position: relative;
+        }
+        .text::before{
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 40px;
+            height: 40px;
+            border-top: 10px solid #111111;
+            border-left: 10px solid #111111;
+            margin: 10px;
+        }
+        .text::after{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            content: '';
+            width: 40px;
+            height: 40px;
+            border-bottom: 10px solid #111111;
+            border-right: 10px solid  #111111;
+            margin: 10px;
+        }
+        h3{
+            position: relative;
+            padding: 0 10px;
+            
+            display: inline;
+        }
+         h3::before{
+            content:'';
+            clear: both;    
+            /* display: inline-block; */
+            /* width: 4px;
+            height: 40px; */
+             background-color: orange;
+            z-index: 100; 
+         } 
+        h3::after{
+            content: '';
+            background-color:white;
+            left: 215px;
+            top: 5px;
+            bottom: 5px;
+            width: 3px;
+            position: absolute;  
+        }
+        .pic{
+            float: left;
+            padding: 10px;
+        }
+        .tt ul{
+            display: flex;
+            list-style: none;
+            background-color: darkgray;
+            position: absolute;
+            padding: 0 10px;
+            
+        }
+        .ttul li + li::before{
+            content: '|';
+            margin: 0 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">
+        <img class="pic" src="https://picsum.photos/200/200?random=2" alt="picture">
+          <h3>ABC Lorem ipsum dolor sit amet consectetur</h3><p>ABC Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem doloremque hic maxime nulla harum eaque dicta quod autem dolores iure  harum eaque dicta quod autem dolores iure. ABC Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem doloremque hic maxime nulla harum eaque dicta quod autem dolores iure  harum eaque dicta quod autem dolores iure.ABC Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem doloremque hic maxime nulla harum eaque dicta quod autem dolores iure  harum eaque dicta quod autem dolores iure.ABC Lorem ipsum dolor sit amet consectetur, 
+
+    </p>
+    </div>
+    <div class="tt">
+        <ul class="ttul">
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+        </ul>
+    </div>
+    <br>
+    <br>
+  <style>
+      .head{
+            background-color: teal;
+            color: white;
+            font-size: 30px;
+            padding: 10px;
+            line-height: 1.2;
+
+            border: 1px solid white;
+            text-align: center;
+            border-radius: 60%;
+            cursor: pointer;
+            display: inline;
+            /* position: absolute; */
+      }
+      .head:hover{
+          background-color: thistle;
+      }
+  </style>
+        <div class="head"><span>
+            button
+        </span></div>
+  
+</body>
+</html>

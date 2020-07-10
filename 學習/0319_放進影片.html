@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0319_放進影片</title>
+    <style>
+        .box {
+            width: 100%;
+            margin: auto;
+            display: flex;
+        }
+        .col{
+            width: 50%;
+        }
+        
+        .video{
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .video iframe{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .text{
+            width: 100%; 
+            padding: 20px;         
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="col">
+            <div class="video">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/KMSTsGGJXDQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        </div>
+       
+        <div class="col">
+             <div class="text">
+            <h2>title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, a? Veritatis quam commodi iure similique
+                qui, eaque odit deleniti nemo.</p>
+        </div>
+        </div>
+
+       
+    </div>
+</body>
+</html>

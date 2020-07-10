@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:auto;
+            /* padding: 5px; */
+            list-style: none;
+        }
+        .flex{
+            /* display: flex; */
+            /* 如果item的那個尺寸超過的話,會換行 */
+            /* flex-wrap: wrap; */
+            margin: auto;
+            /* 直排 */
+            /* flex-direction: column;            */
+        }
+        .item{
+            background-color: rgb(211, 123, 140);
+            width: 100%;
+            /* margin: 5px;  */
+            /* padding: 5px; */
+            font-size: 15px;
+            display: flex;
+            /* 不要收縮 */
+            /* flex-shrink: 0; */
+        }
+        .flex > .item:nth-child(even) .pic{ 
+            /* float: right; */
+            order:1;           
+        }
+        .item .text{
+            /* margin: 30px; */
+            box-sizing: border-box;
+            width: 50%;
+        }
+        .item .pic{
+            padding: 0px 0px;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+        .pic img{
+            width:  100%;
+            vertical-align: bottom;
+        }
+        .pic{
+            width: 50%;
+            box-sizing: border-box;
+
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="flex">
+
+        <div class="item">
+            <div class="pic"><img src="https://picsum.photos/300/200?random=1" alt="圖片說明"></div>
+            <div class="text"><h3>title</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, error?</p></div>
+        </div>
+        <div class="item">
+            <div class="pic"><img src="https://picsum.photos/300/200?random=1" alt="圖片說明"></div>
+            <div class="text"><h3>title</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, error?</p></div>
+        </div>
+        <div class="item">
+            <div class="pic"><img src="https://picsum.photos/300/200?random=1" alt="圖片說明"></div>
+            <div class="text"><h3>title</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, error?</p></div>      
+        </div>
+        <div class="item">
+            <div class="pic"><img src="https://picsum.photos/300/200?random=1" alt="圖片說明"></div>
+            <div class="text"><h3>title</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, error?</p></div>
+        </div>
+        <div class="item">
+            <div class="pic"><img src="https://picsum.photos/300/200?random=1" alt="圖片說明"></div>
+            <div class="text"><h3>title</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, error?</p></div>
+        </div>
+        <div class="item">
+            <div class="pic"><img src="https://picsum.photos/300/200?random=1" alt="圖片說明"></div>
+            <div class="text"><h3>title</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, error?</p></div>      
+        </div>
+    </div>
+</body>
+</html>
