@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js">
+    <script src="https://kit.fontawesome.com/83fb5d23dd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="home.css">
+    
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- ----------- -->
+    <div class="container" id="fourcard">
+        <div class="row">
+                <div class="col-6  square_quick square">
+                    <button type="button" class="btn_quick btn_card" data-toggle="modal"
+                        data-target="#quickModalCenter">
+                        <div class="card-body">
+                            <i class="fas fa-shopping-basket"></i>
+                            <h1 class="card-title">Quick</h1>
+                            <p class="card-text">Group buy</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-6  square_customized square">
+                    <button class="btn_customized btn_card" data-toggle="modal" data-target="#exampleModal">
+                        <div class="card-body">
+                            <i class="fas fa-user-edit"></i>
+                            <h1 class="card-title">Customized</h1>
+                            <p class="card-text">order</p>
+                        </div>
+                    </button>
+                </div>
+            <div class="logo">
+                <h2>Group Buy!</h2>
+            </div>
+                <div class="col-6 square_favorite square">
+                    <button class="btn_favorite btn_card" data-toggle="modal" data-target="#exampleModal">
+                        <div class="card-body">
+                            <i class="fas fa-heart"></i>
+                            <h1 class="card-title">Favorite</h1>
+                            <p class="card-text">order</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-6 square_history square">
+                    <button class="btn_history btn_card" data-toggle="modal" data-target="#exampleModal">
+                        <div class="card-body">
+                            <i class="fas fa-history"></i>
+                            <h1 class="card-title">History</h1>
+                            <p class="card-text">order</p>
+                        </div>
+                    </button>
+                </div>
+        </div>
+    </div>
+    <!-- Address Modal -->
+    <div class="modal fade" id="quickModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quickModalCenterTitle">Location</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">                 
+                    <div style="display: flex;">
+                        <span class="number" style="padding-right: 5px;">Address:</span><input type="text" id="address_val" name="address_val" style="width:55%">
+                        <span style="font-size: 20px; padding: 0 2px;">&</span>
+                    <button type="button" class="btn btn_get btn_customized"  onclick="Get()" style="padding: 3px 10px;">Get location</button>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="GetAddress()" id="address_go" type="button" class="btn btn_go">Go</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --- -->
+
+ 
+
+
+
+
+    
+  <script src="home.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag"
+  async defer></script>
+</body>
+
+</html>

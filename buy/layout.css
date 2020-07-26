@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: 0;
+    /* background-color: #f9be02; */
+}
+/* 改全部的 */
+.smalltitle{
+    font-size: 50px;        
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+.block{
+    padding: 60px 0;
+}
+.smallword{
+    font-size: 25px;        
+}
+/* 導覽列 */
+.navbar{
+    background-color: #f5b625;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    z-index: 100;
+    padding-top: 20px;
+}
+.navbar-brand{
+    /* margin-left: 30px; */
+    font-size: 30px;
+    font-weight: bold;
+}
+.title{
+    font-size: 50px;        
+    text-align: center;
+    font-weight: 300;
+}
+.explan{
+    margin: 30px 0 70px 0;
+    font-size: 1.5rem;
+    padding: 0 60px;
+}
+.addtoteams{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    background-color: #171717;
+    color: white;
+}
+.addtoteams:hover{
+    background-color: #ffb404;
+    color: #171717;
+}
+/* .people{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: calc(100% - 100px);
+} */
+
+
+
+@media screen and (min-width: 992PX){
+    /* 改全部 */
+    .smallword{
+        font-size: 1.875rem;
+    }
+    .navbar-brand{
+        margin-left: 70px;
+    }
+    .title{
+        font-size: 5rem;
+    }
+    .explan{
+        font-size: 1.875rem;
+    }
+    /* .people{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        max-width: 30%;
+
+    } */
+
+}
+
+@media screen and (min-width: 1024PX){
+
+}

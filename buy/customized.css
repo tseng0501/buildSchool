@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: 0;
+}
+.btn_save{
+    background-color: #7cdbc5;
+}
+.form_context{
+    background-color: antiquewhite;
+    padding: 10px;
+}
+.input_title{
+    font-size: 20px; 
+    display: flex; 
+    align-items: center;
+}
+.title{
+    width: 20px; 
+    height: 20px;
+}
+.submittitle{
+    margin-left: 15px;
+}
+.submitcontext{
+    margin-left: 25px;
+}
