@@ -16,12 +16,19 @@
 .smallword{
     font-size: 25px;        
 }
+.texttitle{
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+.icon_name{
+    font-size: 25px;
+}
 /* 導覽列 */
 .navbar{
     background-color: #f5b625;
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
     z-index: 100;
-    padding-top: 20px;
 }
 .navbar-brand{
     /* margin-left: 30px; */
@@ -49,15 +56,36 @@
     background-color: #ffb404;
     color: #171717;
 }
-/* .people{
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    max-height: calc(100% - 100px);
-} */
-
-
-
+.img-l{
+    order: -1;
+}
+.featurestitle{
+    font-size: 20px;
+    display: inline-block;
+    padding-bottom: 20px;
+    position: relative;
+}
+.featurestitle::after{
+    content: "";
+    display: block;
+    width: 80%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    background: #171717;
+    left: 10%;
+}
+.mation{
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+}
+.icon img{
+    width: 50%;
+}
+.icon_context{
+    margin-bottom: 50px;
+}
 @media screen and (min-width: 992PX){
     /* 改全部 */
     .smallword{
@@ -72,14 +100,21 @@
     .explan{
         font-size: 1.875rem;
     }
-    /* .people{
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        max-width: 30%;
-
-    } */
-
+    .textpic{
+        display: flex;
+    }
+    .featurestitle{
+        font-size: 25px;
+    }
+    .icon_name{
+        font-size: 30px;
+    }
+    .icon img{
+        width: 60%;
+    }
+    .icon_context{
+        margin-bottom: 150px;
+    }
 }
 
 @media screen and (min-width: 1024PX){
