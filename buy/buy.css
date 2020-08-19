@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     list-style: 0;
+    font-family: Microsoft JhengHei;
     /* background-color: #f9be02; */
 }
 /* 改全部的 */
@@ -23,6 +24,9 @@
 }
 .icon_name{
     font-size: 25px;
+}
+.img_block{
+    width: 100%;
 }
 /* 導覽列 */
 .navbar{
@@ -114,5 +118,8 @@
     }
     .icon_context{
         margin-bottom: 150px;
+    }
+    .texttitle{
+        font-size: 30px;
     }
 }
