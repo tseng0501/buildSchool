@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        elem.addEventListener('copy',function(e){
+            let body_element = document.querySelector('body');
+
+            let selection = window.getSelection();
+
+            let copy_text = '版權宣告: xxx-' + selection;
+
+            let newdiv = document.createElement('div');
+            newdiv.style.opacity = 0;
+
+            body_element.appendChild(newdiv);
+            newdiv.innerHTML = copy_text;
+
+            selection.selectAllChildren(newdiv);
+
+            window.setTimeout(function(){
+                body_element.removeChild(newdiv);
+            },0);
+        });
+    </script>
+</body>
+</html>

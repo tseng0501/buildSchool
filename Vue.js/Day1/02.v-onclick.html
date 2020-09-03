@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on:click</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <p>{{message}}</p>
+        <button v-on:click="getmessage">click</button>
+    </div>
+    <button onclick="clickButton()">button</button>
+    <script>
+            var vm = new Vue({
+            el:'#app',
+            data:{
+                message:"this is local data",
+            },
+            methods: {
+                getmessage(){
+                    Promise.resolve("Get remote data inside button.")
+                    .then((res) =>{
+                        this.message = res;
+                    });
+                },
+            },
+        });
+        
+        function clickButton() {
+        Promise.resolve("Get remote data by outside button.")
+            .then((res) => {
+                vm.message = res;
+            });
+    }
+    </script>
+</body>
+</html>

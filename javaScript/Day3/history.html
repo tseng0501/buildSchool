@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="ok()">click</button>
+    <script>
+        // //上一頁
+        // history.back();
+        // //下一頁
+        // history.forward();
+
+        // history.go(-1); //history.back();
+        // history.go(1); //history.forward();
+
+        let state = {
+            pageName :"profile"
+        };
+
+        function ok(){
+        window.history.pushState(state, "my profile", "/profile/");
+
+        }
+
+        
+        window.addEventListener('popstate', function(e){
+            var state = e.state;
+        },false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout,setInterval</title>
+</head>
+<body>
+
+    <script>
+        //setTimeout()只會執行一次就結束
+        let timeoutID = window.setTimeout(() => console.log("hello"), 1000);
+
+        //setInterval()間隔固定的時間不斷重複
+        let timeID = window.setInterval(() => console.log("hellooooo"), 1000);
+
+        //cleanInterval() .clearTimeout()
+        window.clearInterval(timeID);
+        window.clearTimeout(timeoutID);
+
+        window.setTimeout('console.log("hello!")',1000);
+
+    </script>
+</body>
+</html>

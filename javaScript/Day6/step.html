@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let result = [];
+        let step = 3;
+
+        function funca(){
+            window.setTimeout(function(){
+                result.push('a');
+                console.log('a');
+
+                if(result.length ===step){
+                    funcd();
+                }
+            }, (Math.random()+ 1) * 1000);
+        }
+        function funcb(){
+            window.setTimeout(function(){
+                result.push('b');
+                console.log('b');
+
+                if(result.length ===step){
+                    funcd();
+                }
+            }, (Math.random()+ 1) * 1000);
+        }
+        function funcc(){
+            window.setTimeout(function(){
+                result.push('c');
+                console.log('c');
+
+                if(result.length ===step){
+                    funcd();
+                }
+            }, (Math.random()+ 1) * 1000);
+        }
+        function funcd(){
+            console.log('上菜');
+            result = [];
+        }
+        funca();
+        funcb();
+        funcc();
+
+    </script>
+</body>
+</html>

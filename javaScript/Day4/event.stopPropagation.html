@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <label for="xxx">lable2</label>
+    <input type="checkbox" name="chkbox" id="xxx"> -->
+    <!-- || -->
+
+
+    <label class="lbl">
+        Lable <input type="checkbox" name="chkbox"  id="chkbox">
+    </label>
+
+    <script>
+        var lbl = document.querySelector('.lbl');
+
+        var chkbox = document.querySelector('#chkbox');
+
+        lbl.addEventListener('click',function(e){
+            console.log('lbl click');
+        },false);
+
+        
+        chkbox.addEventListener('click',function(e){
+            e.stopPropagation();
+        },false);
+    </script>
+</body>
+</html>

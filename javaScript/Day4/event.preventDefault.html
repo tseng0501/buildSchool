@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <a id="link" href="https://www.youtube.com/watch?v=HXDzE2S6-c4">888888</a>
+    <script>
+        var link = document.querySelector('#link');
+
+        // link.addEventListener('click', function(e){
+        //     console.log("google!");
+        // },false);
+
+        link.addEventListener('click', function(e){
+            e.preventDefault();
+            console.log("google!");
+        },false);
+    </script>
+</body>
+</html>

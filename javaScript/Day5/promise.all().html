@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function funca(){
+            return new Promise(function(resolve, reject){
+                window.setTimeout(function() {
+                    console.log('a');
+                    resolve('a');
+                }, (Math.random()+1)*1000);
+            });
+        }
+
+        function funcb(){
+            return new Promise(function(resolve, reject){
+                window.setTimeout(function() {
+                    console.log('b');
+                    resolve('b');
+                }, (Math.random()+1)*1000);
+            });
+        }
+
+        function funcc(){
+            return new Promise(function(resolve, reject){
+                window.setTimeout(function() {
+                    console.log('c');
+                    resolve('c');
+                }, (Math.random()+1)*1000);
+            });
+        }
+        //有順序
+        // funca()
+        // .then(funcb)
+        // .then(funcc);
+
+        //沒順序
+        Promise.all([funca(),funcb(),funcc()])
+        .then(() =>{console.log('上菜');});
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div>
+        <div id="app">
+            <!-- 綁定 Vue 實例中的 message 資料 -->
+            <p>{{message}}</p>  
+            <!-- 綁定 Vue 實例中的 getRemoteMessage 方法至 Click 事件中 -->
+            <button v-on:click="getRemoteMessage">click</button>
+        </div>
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            // el : 將這個 Vue 實體掛載到這裡設置的元素上
+            el:'#app',
+            // data : 登錄資料，當這些資料改變時，畫面會依照變化做改變。
+            data:{
+                message:"this is local data.",
+            },
+            // methods : 登錄方法，這些方法可以藉由 DOM 事件觸發，也可以在 Vue 實例中被叫用。
+            methods: {
+                getRemoteMessage(){
+                    Promise.resolve()
+                }
+            },
+        });
+    </script>
+</body>
+</html>

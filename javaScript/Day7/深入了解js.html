@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function Person(name , age, gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+
+            this.greeting = function(){
+                console.log('hello! my name is ' + this.name + '.');
+            };
+            const kuro = new Person('kuro', 32, 'male');
+            kuro.greeting();
+
+            const John = new Person('John',10,'male');
+            John.greeting();
+        }
+    </script>
+</body>
+</html>

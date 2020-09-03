@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        const funca = function(callback){
+            const i = Math.random() + 1;
+
+            window.setTimeout(function(){
+                console.log('function a');
+
+                if(typeof callback === 'function a'){
+                    callback();
+                }
+            }, i * 1000);
+        };
+        const funcb = function(callback){
+            const i = Math.random() + 1;
+
+            window.setTimeout(function(){
+                console.log('function b');
+            }, i * 1000);
+        };
+        funca(funcb);
+    </script>
+</body>
+</html>

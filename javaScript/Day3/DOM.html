@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create li</title>
+</head>
+<body>
+    <ul id="mylist">
+    <li>item 01</li>
+    <li>item 02</li>
+    <li>item 03</li>
+</ul>
+    <script>
+        let ul = document.getElementById("mylist");
+        let fragment = document.createDocumentFragment();
+
+        for(let i = 0; i < 3; i++){
+            let li = document.createElement("li");
+            li.appendChild(document.createTextNode("item"+(i+1)));
+            fragment.appendChild(li);
+        }
+        ul.appendChild(fragment);
+
+    </script>
+</body>
+</html>

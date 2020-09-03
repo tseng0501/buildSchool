@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <script>
+        el.addEventListener("click",function(event){
+            console.log(this.textContent);
+
+            $ajax('[URL]',function(res){
+                console.log(this.textContent,res);
+            }.bind(this));
+          },false);
+    </script> -->
+  
+
+    <!-- <script>
+       var obj = {
+           x:123
+       };
+       var func = function(){
+           console.log(this.x);
+       };
+
+       func();
+       func.bind(obj)();
+    </script> -->
+
+    <script>
+       el.addEventListener("click",function(event){
+           console.log(this.textContext);
+
+           $ajax('[URL]',res =>{
+               console.log(this.textContext,res);
+           });
+       },false);
+     </script>
+</body>
+</html>

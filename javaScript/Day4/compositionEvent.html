@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <script>
+        var i = document.querySelector("#input");
+        i.addEventListener("compostionstart", function(ev){
+            console.log("compostionstart");
+            console.log("ev.data");
+        });
+
+        i.addEventListener("compostionend", function(ev){
+            console.log("compostionend");
+            console.log("ev.data");
+        });
+
+        i.addEventListener("compostionupdate", function(ev){
+            console.log("compostionupdate");
+            console.log("ev.data");
+        });
+
+        i.addEventListener("input", function(ev){
+            console.log("input");
+            console.log("this.value");
+        });
+    </script>
+</body>
+</html>

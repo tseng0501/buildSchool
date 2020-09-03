@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async 非同步</title>
+</head>
+
+<body>
+
+    <script>
+        const funca = () => {
+            return new Promise((resolve, reject) =>{
+                window.setTimeout(() => {
+                    resolve('A');
+                },(Math.random() + 1) *1000);
+            });
+        }    
+        
+        const funcb = () =>{
+            return new Promise((resolve,reject) =>{
+                window.setTimeout(() =>{
+                    resolve('b');
+                },(Math.random() + 1 ) * 1000);
+            });
+        }
+        const funcc = () =>{
+            return new Promise((resolve,reject) =>{
+                window.setTimeout(() =>{
+                    resolve('c');
+                },(Math.random() + 1 ) * 1000);
+            });
+        }
+
+        async function asyncCall(){
+            let result = await Promise.all([funca(), funcb(), funcc()])
+            console.log('all task done');
+            // console.log('calling');
+            // let result;
+            // result = await funca();
+            // console.log(result);
+
+            // result = await funcb();
+            // console.log(result);
+
+            // result = await funcc();
+             console.log(result);
+        }
+
+        asyncCall();
+
+
+        </script>
+</body>
+
+</html>

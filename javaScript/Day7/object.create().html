@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.create</title>
+</head>
+<body>
+    <script>
+        const Person = {
+            name :'name',
+            age :0,
+            gender :'unknow',
+            greeting: function(){
+                return 'hello my name is'+ this.name+ '.';
+            }
+        };
+        const kuro = Object.create(Person,{
+            name:{
+                writable:true,
+                configurable:true,
+                value:'kuroooo  '
+            },
+            age:{
+                writable:true,
+                configurable:true,
+                value:33
+            }
+        });
+
+        console.log(kuro.name);
+    </script>
+</body>
+</html>
