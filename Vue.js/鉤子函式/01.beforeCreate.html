@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beforeCreate 及 created</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <script>
+            var vm = new Vue({
+            el:'#app',
+            data:{
+                a:1
+            },
+            beforeCreate() {
+                console.log('hook:beforeCreate');
+                console.log(`this.a:${this.a}`);
+                console.log(`this.$el:${this.$el}`);
+                console.log();
+
+            },
+            created() {
+                console.log('hook:Created');
+                console.log(`this.a:${this.a}`);
+                console.log(`this.$el:${this.$el}`);
+                console.log();
+            },
+        });
+
+        //beforeCreate : 在 beforeCreate 時因實體還沒創建，
+        //所以 a 跟 $el 都是 undefined 。
+        //created : 到了 created 時已經創建實例，所以 a 已變為 1 ，
+        //但是 $el 因為還未掛載至目標元素，所以依然是 undefined 。
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beforeDestroy 及 destroyed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        {{a}}
+        <button v-on:click="a++">add</button>
+        <button v-on:click="$destroy()">Destroy instance</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1
+            },
+            
+            beforeDestroy() {
+            console.log('Hook: beforeDestroy');
+            console.log();
+        },
+            destroyed() {
+            console.log('Hook: destroyed');
+            console.log();
+        }
+});
+//beforeDestroy : 叫用 beforeDestroy 表示即將執行銷毀動作，
+//如果有些物件要釋放資源可以在這處理。
+//destroyed : 叫用 destroyed 時，實體已經銷毀。
+    </script>
+</body>
+
+</html>

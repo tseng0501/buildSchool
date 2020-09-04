@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beforeUpdate 及 updated</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        {{a}}
+        <button v-on:click="a++">add</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1
+            },         
+            beforeUpdate() {
+            console.log('Hook: beforeUpdate');
+            console.log(` this.a: ${this.a}`);
+            console.log(` this.$el: ${this.$el}`);
+            console.log(this.$el.outerHTML);
+            console.log();
+        },
+            updated() {
+            console.log('Hook: updated');
+            console.log(` this.a: ${this.a}`);
+            console.log(` this.$el: ${this.$el}`);
+            console.log(this.$el.outerHTML);
+            console.log();
+        },           
+});
+//beforeUpdate : a 改變後觸發 beforeUpdate ，
+//可以看到 a 已經變為 2 了，可是頁面上還是 1 ，
+//表示這時雖然 data 已經改變，可是還沒有重新渲染畫面。
+//updated : 完成重新渲染的作業後觸發，這時可以看到畫面已經將 1 改為 2了。
+    </script>
+</body>
+
+</html>

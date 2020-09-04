@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beforeMount 及 mounted</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{a}}
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1
+            },
+           
+            beforeMount() {
+            console.log('Hook: beforeMount');
+            console.log(this.$el.outerHTML);
+            console.log();
+        },
+            mounted() {
+            console.log('Hook: mounted');
+            console.log(this.$el.outerHTML);  
+            console.log();
+        },
+});
+        //beforeMount : 流程圖上有提到，在叫用 beforeMount 前 Vue 已經決定模板的樣式，
+        //所以在 beforeMount 中的 $el 已經有值了，只是它還未依照 Vue 實體上的定義所渲染，
+        //只是個初始設定的模板，因此可以看到 {{a}} 、 v-on 這些模板語法都還未被轉換。
+        //mounted : 在 mounted 被叫用時已經把 Vue 實體上的定義綁定到元素上，
+        //所以這裡看到的是經由 Vue 渲染後的配置。
+    </script>
+</body>
+
+</html>

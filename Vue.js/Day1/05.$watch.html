@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$watch</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{a}}
+        {{b}}
+        <button @click="add">add</button>
+    </div>
+    <script>
+        //$watch : 在第一個參數中設定的資料變化時觸發第二個參數的函式，在
+        //這個例子中當 a 發生變化時，會將未修改時的 a 數值設給 b 。
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                a:1,
+                b:1
+            },
+            methods: {
+                add(){
+                    this.a +=1;
+                }
+            },
+        });
+        vm.$watch('a',function(newValue, oldValue){
+            this.b = oldValue;
+        })
+    </script>
+</body>
+</html>
