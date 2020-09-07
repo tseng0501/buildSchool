@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:id="id">bind directives</div>
+        <button v-bind:disabled='isDisabled'>I am disabled</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data:{
+                isDisabled :false
+            }
+        })
+    </script>
+    <!-- 一般寫法 -->
+    <!-- <button v-bind:disabled='isDisabled'>I am disabled</button> -->
+    <!-- 簡寫 -->
+    <!-- <button :disabled='isDisabled'>I am disabled</button> -->
+    <!-- v-bind 使用 : 當作簡寫。 -->
+</body>
+</html>

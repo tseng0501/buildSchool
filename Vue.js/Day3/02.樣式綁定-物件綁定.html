@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>樣式綁定-物件綁定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day11 -->
+    <div id="app">
+        <div>
+            <button @click="fontSize += 1">+</button>
+            <button @click="fontSize -= 1">-</button>
+            <span :style="objStyle">Hello Style Binding by obj</span>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                fontSize: 12,
+                fontWeight: 'bold'
+            },
+            computed: {
+                objStyle() {
+                    return {
+                        fontSize: `${this.fontSize}px`,
+                        fontWeight: this.fontWeight
+                    };
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

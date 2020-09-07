@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>datePlusNumberComputed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="a++">+</button>
+        <button @click="a--">-</button>
+        <div>a: {{a}}</div>
+        <div>changed: {{newA}}</div>
+        <div>before change: {{oldA}}</div>
+        <!-- $watch 會去更新 newA 及 oldA ，在畫面上會看到 {{newA}} 
+            總會跟 a 相同，而 {{oldA}} 會是 a 改變之前的值 -->
+        <!-- 1-- -->
+        <div>
+            <button @click="b.c.d++">+</button>
+            <button @click="b.c.d--">-</button>
+            <div>b.c.d:{{b.c.d}}</div>
+            <button @click="b.c.e++">+</button>
+            <button @click="b.c.e--">-</button>
+            <div>b.c.d: {{b.c.e}}</div>
+            <div>changed b: {{newB}}</div>
+            <div>before change b: {{oldB}}</div>
+        </div>
+
+        <div>
+            <div>
+                f:{{f}}
+                <button @click="f++">+</button>
+                <button @click="f--">-</button>
+            </div>
+            <div>
+                g:{{g}}
+                <button @click="g++">+</button>
+                <button @click="g--">-</button>
+            </div>
+            <div>f + g: {{fPlusg}}</div>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1,
+                newA: 0,
+                oldA: 0,
+                //1--
+                b: {
+                    c: {
+                        d: 1,
+                        e: 1,
+                    }
+                },
+                newD: 0,
+                oldD: 0,
+                newB: {},
+                oldB: {},
+                // 2--
+                f: 1,
+                g: 1,
+                fPlusg: 0
+            }
+        });
+
+        vm.$watch('a', function (newA, oldA) {
+            this.newA = newA;
+            this.oldA = oldA;
+        });
+        // 1--
+        vm.$watch('b.c.d', function (newD, oldD) {
+            this.newD = newD;
+            this.oldD = oldD;
+        });
+        vm.$watch('b', function (newB, oldB) {
+            this.newB = newB;
+            this.oldB = newB;
+        }, {
+            deep: true
+        });
+        // 2--
+        vm.$watch(function () {
+            return this.f + this.g;
+        }, function (fPlusg) {
+            this.fPlusg = fPlusg;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day8 -->
+    <!-- 1,2 -->
+    <!-- <div id="app">
+        <div>
+            <div>
+                n: {{n}}
+                <button @click="n++">+</button>
+                <button @click="n--">-</button>
+            </div>
+            zeroToNArr: {{zeroToNArr}}
+        </div>
+    </div> -->
+
+    <!-- 3 -->
+    <!-- 當按下 unwatch n 按鈕時觸發 unwatchNFunc 函數，註銷監聽器 -->
+    <div id="app">
+        <div>
+          <button @click="unwatchNFunc">unwatch n</button>
+          <div>
+            n: {{n}}
+            <button @click="n++">+</button>
+            <button @click="n--">-</button>      
+          </div>
+          zeroToNArr: {{zeroToNArr}}
+        </div>
+      </div>
+    <script>
+        // var vm = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         n: 10,
+        //         zeroToNArr: [],
+        //         unwatchNFunc: () =>{}
+        //     },
+        //      created() {
+        //          this.zeroToNArr = Array.from(new Array(this.n + 1), (val, index) => index);
+        //      }
+        // });
+
+        // vm.$watch('n', function () {
+        //     this.zeroToNArr = Array.from(new Array(this.n + 1), 
+        //     (val, index) => index);
+        // });
+
+        // --2
+        // var vm = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         n: 10,
+        //         zeroToNArr: [],
+        //         unwatchNFunc: () => { }
+        //     }
+        // });
+
+        // vm.$watch('n', function () {
+        //     this.zeroToNArr = Array.from(new Array(this.n + 1),
+        //         (val, index) => index);
+        // }, {
+        //     immediate: true
+        // });
+        // --3
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                n: 10,
+                zeroToNArr: [],
+                unwatchNFunc: () => { }
+            }
+        });
+        vm.unwatchNFunc = vm.$watch('n', function () {
+            // [0, 1, 2, 3..., n]
+            this.zeroToNArr = Array.from(new Array(this.n + 1), (val, index) => index);
+        }, {
+            immediate: true
+        });
+    </script>
+</body>
+
+</html>

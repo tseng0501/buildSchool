@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for--in</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day13 -->
+    <div id="app">
+        <div v-for="item in items">{{item}}</div>
+        <div v-for="item in items">{{itemheader}} is {{item}}</div>
+        <div v-for="item in objItems">Eng: {{item.name}}, Number: {{item.number}}</div>
+        <div v-for="(item, index) in items">{{itemheader}} is {{index}} : {{item}}</div>
+        <!-- index 是以 0 為起始值 -->
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                itemheader:'number',
+                items:['one','two','three'],
+                objItems: [
+                    {name: 'one', number: 1},
+                    {name: 'two', number: 2},
+                    {name: 'three', number: 3},
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

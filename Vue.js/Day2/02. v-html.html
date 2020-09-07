@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> v-html</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{a}}
+        <!-- {{h}} : Mustache 標籤會將 html 資料當作字串輸出。 -->
+        <div>{{h}}</div>
+        <!-- 它會將 h 資料設置給此元素( <div> )的 innerHTML -->
+        <div v-html="h"></div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                h:'<h1>I am header<h1>'
+            }
+        }) ;
+    </script>
+</body>
+</html>

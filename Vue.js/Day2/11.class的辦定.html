@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 的綁定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .red {
+            color: red;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- day10 -->
+    <div id="app">
+        <span :class="inlineClass">linline class</span>
+        <button @click="changeColor">change color</button>
+        <br>
+        ------------------------
+        <br>
+        <!-- 1 -->
+        <span>
+            <span :class="[arrColor, 'bold']">Array Class</span>
+            <!-- == <span class="red bold">Array Class</span> -->
+        </span>
+        -----------
+        <br>
+        <!-- 2 -->
+        <div>
+            <span :class="{red:objClor === 'red',
+            blue: objColor ==='blue',bold:true}">object class</span>
+            <button @click="changeObjColor">change color</button>
+        </div>
+        <!-- 3 -->
+        <span :class="objClass">object class</span>
+        <!--=== <span :class="[{red: objColor === 'red', 
+        blue: objColor === 'blue', 
+        bold: true}, 'bold']">Object in Array Class</span> -->
+    </div>  
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                inlineClass: "red bold",
+                // 1------------   
+                arrColor: 'blue',
+                // 2-----------
+                objColor: 'red'
+                
+            },
+            // 3
+            computed: {
+                objClass(){
+                    return{
+                        red: this.objColor ==='red',
+                        blue: this.objColor ==='blue',
+                        bold: true
+                    };
+                }
+            },
+            methods: {
+                changeColor() {
+                    let classArr = this.inlineClass.split(' ');
+                    let redIndex = classArr.indexOf('red');
+                    if (redIndex !== -1) {
+                        classArr.splice(redIndex, 1, 'blue');
+                        this.inlineClass = classArr.join(' ');
+                        return;
+                    }
+                    let blueIndex = classArr.indexOf('blue');
+                    classArr.splice(blueIndex, 1, 'red');
+                    this.inlineClass = classArr.join(' ');
+                },
+                // 1---
+                changeArrColor() {
+                    this.arrColor = this.arrColor === 'red' ? 'blue' : 'red';
+                },
+                changeObjColor(){
+                    this.objColor = this.objColor === 'red' ? 'blue' : 'red';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

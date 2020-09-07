@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-else</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day12 -->
+    <div id="app">
+        <span>isA : {{isA}}</span>
+        <button @click="isA = !isA">toggle A</button>
+        <span>isB : {{isB}}</span>
+        <button @click="isB = !isB">toggle B</button>
+        <template v-if="isA">
+            <span>output</span>
+            <span>A</span>
+        </template>
+        <span v-else-if="isB">show B</span>
+        <span v-else>not A and B</span>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isA: false,
+                isB: false
+            }
+        });
+    </script>
+</body>
+
+</html>

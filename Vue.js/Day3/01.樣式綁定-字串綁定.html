@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>樣式綁定-字串綁定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day11 -->
+    <div id="app">
+        <button @click="plusInlineFontSize">+</button>
+        <button @click="minusInlineFontSize">-</button>
+        <span :style="inlineStyle">Hello Style Binding</span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                inlineStyle: "font-size:20px;font-weight:bold",
+
+            },
+            methods: {
+                plusInlineFontSize() {
+                    let styles = this.inlineStyle.split(';');
+                    this.inlineStyle = styles.map(style => this.countFontSize(style, true)).join(';');
+                },
+                minusInlineFontSize() {
+                    let styles = this.inlineStyle.split(';');
+                    this.inlineStyle = styles.map(style => this.countFontSize(style, false)).join(';');
+                },
+                countFontSize(style, isPlus) {
+                    let fontSizeIndex = style.indexOf('font-size:');
+                    if (fontSizeIndex === -1) return style;
+                    let size = parseInt(style.substring(0 + 'font-size:'.length, style.indexOf('px')));
+                    size = isPlus ? ++size : --size;
+                    return `font-size:${size}px`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

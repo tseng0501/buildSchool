@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for--in</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day13 -->
+    <div id="app">
+        <ul>
+            <li v-for="value in obj">{{value}}</li>
+        </ul>
+        <ul>
+            <li v-for="(value, key, index) in obj">{{index}}. {{key}}: {{value}}</li>
+        </ul>
+        -----------------------------
+        <ul>
+            <li v-for="n in 10">{{n}}</li>
+        </ul>
+        <div v-for="item in objItems" :key="item.number">
+            Eng: {{item.name}}, Number: {{item.number}}</div>
+        -----------------------------
+        <ul>
+            <template v-for="(value, key, index) in obj">
+                <li>{{index}}. Key: {{key}}</li>
+                <li>{{index}}. Value: {{value}}</li>
+            </template>
+        </ul>
+        -----------------------
+        <ul>
+            <li v-for="item in sortedObjItems">{{item.name}}</li>
+        </ul>
+        ------------------------
+        <ul>
+            <li v-for="item in sortedObjItems">
+                {{item.name}}
+                <ul>
+                    <li v-for="point in oddPoints(item.points)">{{point.name}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: ['one', 'two', 'three'],
+                objItems: [
+                    {
+                        name: 'one', number: 1, points: [
+                            { name: 'oneone', number: 11 },
+                            { name: 'onetwo', number: 12 },
+                            { name: 'onethree', number: 13 }
+                        ]
+                    },
+                    {
+                        name: 'two', number: 2, points: [
+                            { name: 'twoone', number: 21 },
+                            { name: 'twotwo', number: 22 },
+                            { name: 'twothree', number: 23 }
+                        ]
+                    },
+                    {
+                        name: 'three', number: 3, points: [
+                            { name: 'threeone', number: 31 },
+                            { name: 'threetwo', number: 32 },
+                            { name: 'threethree', number: 33 }
+                        ]
+                    }
+                ],
+                obj: {
+                    firstName: 'peter',
+                    latName: 'chen',
+                    account: 'peter1234'
+                }
+            },
+            computed: {
+                sortedObjItems() {
+                    return this.objItems.reverse();
+                }
+            },
+            methods: {
+                oddPoints(points) {
+                    return points.filter(point => point.number % 2 !== 0);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

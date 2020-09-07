@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- day6 -->
+    <div id="app">
+        <div>
+            <span>{{b}}</span>
+            <button v-on:click.once='click'>b--</button>
+        </div>
+    </div>
+
+    <!-- 這裡 v-on:click.once 綁定了實體中的 click 方法，所以按下按鈕後
+    ， b 會減一，但是後面加了 once 這個修飾符，代表這個事件只能被叫用一次
+    ，所以減了一次之後就不會在叫用此事件了。 -->
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                b:10000,
+            },
+            methods: {
+                click() {
+                    this.b--;
+                }
+            }
+        });
+    </script>
+    <!-- 一般寫法 -->
+    <!-- <button v-on:click.once='click'>b--</button> -->
+
+    <!-- 簡寫 -->
+    <!-- <button @click.once='click'>b--</button> -->
+    <!-- v-on 使用 @ 當作簡寫。 -->
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setter&getter</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day14 -->
+    <div id="app">
+        <div>
+            <button @click="a+=1">a++</button>
+            {{a}}
+        </div>
+        <div>
+            <!-- <button @click="b+=1">b++</button> -->
+            <button @click="plusB">b++</button>
+            {{b}}
+        </div>
+        -----------
+    </div>
+    <div id="app2">{{a}}</div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1
+            },
+            created() {
+                this.b = 1;
+            },
+            methods: {
+                plusB() {
+                    this.b += 1;
+                    this.$forceUpdate();
+                }
+            }
+        });
+        var vm = new Vue({
+            el: '#app2',
+            data: {
+                a: 1
+            },
+            mounted() {
+                this.a = 2;
+                console.log(this.$el.textContent === '2');  // false
+                this.$nextTick(() => {
+                    console.log(this.$el.textContent === '2'); // true
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>

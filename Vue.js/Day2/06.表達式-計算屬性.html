@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>將模板內的表達式用計算屬性改寫</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day7 -->
+    <div id="app">
+        <button @click="number++">+</button>
+        <button @click="number--">-</button>
+        <div>
+            <!-- 1 number % 2 === 0?'even' : 'odd'判斷 number 是否是偶數 -->
+            <span>number {{number}} is {{number % 2 === 0?'even' : 'odd'}}</span>
+            <br>
+            <!-- 2  --- -->
+            <span>number {{number}} is {{numberEvenOrodd}}</span>
+            <br>
+            <!-- 3 --- -->
+            <span>Number {{number}} is {{numberEvenOrOddSetter}}</span>
+            <button @click="numberEvenOrOddSetter='even'">Set Even</button>
+            <button @click="numberEvenOrOddSetter='odd'">Set Odd</button>
+            <!--4 --- -->
+            <div>
+                <span>Number {{number}} is {{evenOrOdd()}}</span>
+            </div>
+            <!--5 ---- -->
+            <div>
+                <div>computed:{{datePlusNumberComputed}}</div>
+                <div>Method: {{datePlusNumberMethod()}}</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                //1 --
+                number: 1
+            },
+            // 2 --
+            computed: {
+                numberEvenOrodd() {
+                    return this.number % 2 === 0 ? 'even' : 'odd';
+                },
+                // 3 ---
+                numberEvenOrOddSetter: {
+                    get() {
+                        return this.number % 2 === 0 ? 'even' : 'odd';
+                    },
+                    set(evenOrOdd) {
+                        if (this.number % 2 === 0) {
+                            if (evenOrOdd !== 'even') this.number++;
+                            return;
+                        }
+                        if (evenOrOdd !== 'odd') this.number++;
+                    }
+                },
+                    // 5----
+                    datePlusNumberComputed(){
+                    return Date.now();
+                }
+            },
+            // 4---
+                methods: {
+                    evenOrOdd(){
+                        return this.number % 2 === 0 ? ' even' : 'odd';
+                    },
+                    // 5--
+                    datePlusNumberMethod(){
+                    return Date.now();
+                }      
+            }     
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>監聽器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day8 -->
+    <div id="app">
+        <div>
+            <button @click="a++">+</button>
+            <button @click="a--">-</button>
+            <div>a: {{a}}</div>
+            <div>changed: {{newA}}</div>
+            <div>before change: {{oldA}}</div>
+        </div>
+        --------------------------------------
+        <div>
+            <button @click="b.c.d++">+</button>
+            <button @click="b.c.d--">-</button>
+            <div>b.c.d: {{b.c.d}}</div>
+            <div>changed d: {{newD}}</div>
+            <div>before change d: {{oldD}}</div>
+            <button @click="b.c.e++">+</button>
+            <button @click="b.c.e--">-</button>
+            <div>b.c.e: {{b.c.e}}</div>
+            <div>changed b: {{newB}}</div>
+            <div>before change b: {{oldB}}</div>
+        </div>
+        --------------------------------------
+        <div>
+            <div>
+                f: {{f}}
+                <button @click="f++">+</button>
+                <button @click="f--">-</button>
+            </div>
+            <div>
+                g: {{g}}
+                <button @click="g++">+</button>
+                <button @click="g--">-</button>
+            </div>
+            <div>f + g: {{fPlusg}}</div>
+        </div>
+        --------------------------------------
+        <div>
+            <button @click="unwatchNFunc">unwatch n</button>
+            <div>
+                n: {{n}}
+                <button @click="n++">+</button>
+                <button @click="n--">-</button>
+            </div>
+            zeroToNArr: {{zeroToNArr}}
+        </div>
+        --------------------------------------
+        <div>
+            z: {{z}}
+            <button @click="z++">+</button>
+            <button @click="z--">-</button>
+            z minus: {{zminus}}
+            z plus: {{zplus}}
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1,
+                newA: 0,
+                oldA: 0,
+
+                b: {
+                    c: {
+                        d: 1,
+                        e: 1,
+                    }
+                },
+                newD: 0,
+                oldD: 0,
+                newB: {},
+                oldB: {},
+
+                f: 1,
+                g: 1,
+                fPlusg: 0,
+
+                n: 10,
+                zeroToNArr: [],
+
+                unwatchNFunc: () => { },
+
+                z: 1,
+                zminus: 0,
+                zplus: 0
+            },
+            computed: {
+                fPlusgComputed() {
+                    return this.f + this.g;
+                }
+            },
+            created() {
+                this.unwatchNFunc = this.$watch('n', function () {
+                    // [0, 1, 2, 3..., n]
+                    this.zeroToNArr = Array.from(new Array(this.n + 1), (val, index) => index);
+                }, {
+                    immediate: true
+                });
+            },
+            // created() {
+            //   // [0, 1, 2, 3..., n]
+            //   this.zeroToNArr = Array.from(new Array(this.n + 1), (val, index) => index);
+            // }
+            watch: {
+                // basic
+                // a: function(newA, oldA) {
+                //   this.newA = newA;
+                //   this.oldA = oldA;          
+                // },
+                // string
+                a: 'aMethod',
+                // expression
+                'b.c.d': function (newD, oldD) {
+                    this.newD = newD;
+                    this.oldD = oldD;
+                },
+                // deep
+                b: {
+                    handler: function (newB, oldB) {
+                        console.log(newB === oldB)
+                        this.newB = newB;
+                        this.oldB = oldB;
+                    },
+                    deep: true
+                },
+                // function
+                fPlusgComputed: function (fPlusg) {
+                    this.fPlusg = fPlusg;
+                },
+                // immediate
+                // n: {
+                //   handler: function() {
+                //     // [0, 1, 2, 3..., n]
+                //     this.zeroToNArr = Array.from(new Array(this.n + 1), (val, index) => index);
+                //   },
+                //   immediate: true
+                // },
+                z: [
+                    {
+                        handler: function (newVal) {
+                            this.zminus = newVal - 1;
+                        }
+                    },
+                    function (newVal) {
+                        this.zplus = newVal + 1;
+                    }
+                ]
+            },
+            methods: {
+                aMethod(newA, oldA) {
+                    this.newA = newA;
+                    this.oldA = oldA;
+                }
+            }
+        });
+
+// vm.$watch('a', function(newA, oldA) {
+//   this.newA = newA;
+//   this.oldA = oldA;
+// });
+
+// vm.$watch('b.c.d', function(newD, oldD) {
+//   this.newD = newD;
+//   this.oldD = oldD;
+// });
+
+
+// vm.$watch('b', function(newB, oldB) {
+//   this.newB = newB;
+//   this.oldB = oldB;
+// }, {
+//   deep: true
+// });
+
+//vm.$watch(function() {
+//  return this.f + this.g;
+//}, function(fPlusg) {
+//  this.fPlusg = fPlusg;
+//});
+
+//vm.unwatchNFunc = vm.$watch('n', function() {
+//  // [0, 1, 2, 3..., n]
+//  this.zeroToNArr = Array.from(new Array(this.n + 1), (val, index) => index);
+//}, {
+//  immediate: true
+//});
+    </script>
+</body>
+
+</html>

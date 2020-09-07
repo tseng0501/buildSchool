@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算屬性與監聽器的比較</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day9 -->
+    <div id="app">
+        <button @click="a++">+</button>
+        <button @click="a--">-</button>
+        a: {{a}},
+        <button @click="b++">+</button>
+        <button @click="b--">-</button>
+        b: {{b}}, a + b: {{aplusb}}
+
+        <div>
+            <button @click="asyncSource++">+</button>
+            <button @click="asyncSource--">-</button>
+            {{asyncSource}}
+            {{asyncData}}
+        </div>
+    </div>
+
+    <script>
+        Vue.use(AsyncComputed);
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1,
+                b: -1,
+                aplusb: 0,
+
+                asyncSource: 0,
+                // asyncData: null
+            },
+            asyncComputed: {
+                asyncData: function () {
+                    return Promise.resolve(this.asyncSource * 2);
+                }
+            },
+            computed: {
+                //asyncData(){
+                //  return Promise.resolve(this.a).then((res) => {
+                //    return res;
+                //  });
+                //}
+                //aplusb() {
+                //  return this.a + this.b;
+                //}
+            },
+            watch: {
+                asyncSource: {
+                    handler: function (val) {
+                        Promise.resolve(val * 2).then((res) => {
+                            this.asyncData = res;
+                        });
+                    },
+                    immediate: true
+                },
+                a: function (val) {
+                    this.aplusb = val + this.b;
+                },
+                b: function (val) {
+                    this.aplusb = val + this.a;
+                }
+            },
+            created() {
+                //this.$watch(function() {
+                //  return this.a + this.b;
+                //}, function(val) {
+                //  this.aplusb = val;
+                //});
+            }
+        });
+    </script>
+</body>
+
+</html>
