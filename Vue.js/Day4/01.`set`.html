@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>`set`</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day15 -->
+    <div id="app">
+        <div>
+            first name:{{user.firstName}}, last name:{{user.lastName}}
+        </div>
+    </div>
+
+    <!-- firstName 修改的結果會響應至頁面上 。 -->
+    <!-- lastName 修改後頁面不會響應變化。 -->
+    <script>
+        var vm = new Vue(
+            {
+                el: "#app",
+                data: {
+                    user:{
+                        firstName: 'Peter',
+                    },
+                },
+                created() {
+                    // this.$set(this.user, 'lastName', 'Chen');
+                    // Object.assign(this.user, {lastName: 'Chen', account: 'peter3598768'});
+                    this.info = Object.assign({}, this.info, {lastName: 'Chen', account: 'peter3598768'});
+                }
+            }
+        );
+    </script>
+
+<!-- target : 目標物件或是目標陣列。 -->
+<!-- key : 目標屬性或是陣列元素位置。 -->
+<!-- value : 欲賦予的資料值。 -->
+</body >
+</html>
