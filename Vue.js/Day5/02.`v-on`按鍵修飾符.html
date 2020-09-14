@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>`v-on` 按鍵修飾符</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day18 -->
+    <!-- 設定鍵盤修飾符 -->
+    <div id="app">
+        <input @keyup.13="what='keyup.13'">
+        <span>you trigger event by <strong>{{what}}</strong></span>
+    </div>
+
+    <!-- 使用別名替代編號設置 -->
+    <div id="app">
+        <input @key.enter="what='keyup.enter'">
+        <span>you trigger event by <strong>{{what}}</strong></span>
+    </div>
+
+    <!-- 客製別名 -->
+    <div>
+        <input @keyup.f1="what='keyup.f1'" @keyup.up="what='keyup.up'" @keyup.insert-mode="what='keyup.insert-mode'">
+        <span>You trigger event by <strong>{{what}}</strong></span>
+    </div>
+    <script>
+
+        Vue.config.keyCodes = {
+            f1: 112,
+            up: [38, 87],
+            "insert-mode": 73
+        };
+
+    </script>
+
+    <!-- 自動匹配按鍵修飾符 -->
+    <div>
+        <input @keyup.page-down="what='keyup.page-down'" />
+        <span>You trigger event by <strong>{{what}}</strong></span>
+    </div>
+    <!-- 這樣設定時， Vue.js 會在函數中使用 $event.key === 'PageDown' 判斷式決定是否為目標按鈕。 -->
+
+    <!-- 系統修飾鍵 -->
+     
+
+</body>
+
+</html>

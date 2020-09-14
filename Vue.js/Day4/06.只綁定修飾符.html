@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>只綁定修飾符</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day16 -->
+    <div id="app">
+        <form @submit.prevent>
+            <button type="sumbit">submit</button>
+        </form>
+
+    </div>
+    <!-- 物件的設定方式不能使用簡寫的 @  -->
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                doWhat: ''
+            },
+            methods: {
+                showUp: function (event) {
+                    this.doWhat = `up ${event.target.tagName}`;
+                },
+                showDown: function (event) {
+                    this.doWhat = `down ${event.target.tagName}`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

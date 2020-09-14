@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用物件綁定事件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day16 -->
+    <div id="app">
+        <div>
+            <button v-on="{ mousedown: showDown, mouseup: showUp }">click me</button>
+            {{doWhat}}
+        </div>
+    </div>
+    <!-- 像是 event.preventDefault() 或 event.stopPropagation() 這類的處理常常會在事件中用到， 
+        Vue.js 中可以設定相關的事件修飾符，以減少方法中的代碼量。 -->
+    <!-- prevent 修飾符會叫用 event.preventDefault() 以阻止表單送出，
+        可以把例子中的 @submit.prevent 拔掉，比較看看按下 submit 按鈕的差異。 -->
+
+    <!-- 在沒有 @submit.prevent 的情況下，頁面會閃一下，這時頁面已送出
+    表單並重新載入了，而加上 @submit.prevent 後畫面不會重新載入。 -->
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                doWhat: ''
+            },
+            methods: {
+                showUp: function (event) {
+                    this.doWhat = `up ${event.target.tagName}`;
+                },
+                showDown: function (event) {
+                    this.doWhat = `down ${event.target.tagName}`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修飾符</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day17 -->
+    <!-- .stop 修飾符 -->
+    <div class="outer" @click="alert('outer, none-once, default')"> 
+        outer
+        <div class="middle" target="_blank" @click="alert('middle, none-capture, default')">
+            middle
+            <div class="inner3" target="_blank" @click.stop="alert('inner3, not trigger upper except capture">
+                inner3, stopPropagation(not trigger upper except capture)
+            </div>
+        </div>
+    </div>
+    <!-- .prevent 修飾符 -->
+    <a class="inner2" href="https://ithelp.ithome.com.tw/articles/10206828" 
+    target="_blank" @click.prevent="alert('inner2, none-passive, default, not open new page')">
+    inner2, none-passive & preventDefault(not open new page)</a>
+
+    <!-- .capture 修飾符 -->
+    <div class="middle" target="_blank"  @click.capture="alert('middle, capture')" @click="alert('middle, none-capture, default')">
+        middle, capture & none-capture &self
+        <a class="inner1" href="https://www.mozilla.org" target="_blank" @click="alert('inner1, passive, open new page')">
+            inner1, passive & preventDefault(which is not allowed)
+          </a>
+    </div>
+
+    <!-- .self 修飾符 -->
+    <div class="middle" target="_blank" @click.self="alert('middle, self')">
+        middle, self
+        <div class="inner4" target="_blank" @click="alert('inner4')">
+        inner4
+    </div>
+    <!-- .once 修飾符 -->
+    <div class="outer" @click.once="alert('outer,once')" @click="alert('outer,none-once,default')">
+        outer
+    </div>
+
+    <!-- .passive 修飾符 -->
+    <a class="inner1" href="https://www.mozilla.org" target="_blank" @click.passive.prevent="alert('inner1, passive, open new page')">
+        inner1, passive & preventDefault(which is not allowed)
+    </a>
+</div>
+</body>
+
+</html>

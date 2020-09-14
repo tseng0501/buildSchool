@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直接使用事件綁定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- day16 -->
+    <div id="app">
+        <div>
+            <button @click="click('hi', $event)">hi</button>
+            <button @click="click('yo', $event)">yo</button>
+            you click {{what}} {{tag}}
+        </div>
+    </div>
+    <script>
+           var vm = new Vue({
+               el:'#app',
+               data:{
+                    what: '',
+                    tag: '',
+               },
+               methods: {
+                   click: function(what, event){
+                       this.what = what;
+                       this.tag = event.target.tagName;
+                   }
+               }
+        });
+    </script>
+</body>
+
+</html>
